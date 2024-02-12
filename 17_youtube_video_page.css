@@ -1,0 +1,813 @@
+*{
+  font-family:  roboto,arial;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+
+  background-color: rgb(245, 245, 245);
+  padding: 90px 30px 20px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+header {
+  background-color: white;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  border-bottom: 1px solid rgb(233, 233, 233);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+.menu-icon-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 6px;
+  margin-right: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.menu-icon-frame:hover {
+  background-color: rgb(233, 233, 233);
+}
+.menu-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.youtube-logo {
+  width: 120px;
+  cursor: pointer;
+}
+.middle {
+  display: flex;
+  align-items:center ;
+  flex: 1;
+  margin-left: 60px;
+  margin-right: 70px;
+  max-width: 600px;
+}
+
+.search-bar {
+  flex: 1;
+  width: 0;
+  height: 40px;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 20px 0 0 20px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+.search-bar::placeholder {
+  font-size: 15px;
+  font-family:  roboto,arial;
+}
+.search-button {
+  width: 60px;
+  height: 40px;
+  border-radius: 0 20px 20px 0;
+  border: 1px solid  rgb(231, 231, 231);
+  background-color: rgb(231, 231, 231);
+  margin: -1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.search-button:hover {
+  background-color: rgb(211, 211, 211);
+}
+.search-icon {
+  height: 25px;
+}
+.voice-search-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 20px;
+  margin-left: 8px;
+  background-color: rgb(231, 231, 231);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.voice-search-button:hover {
+  background-color: rgb(211, 211, 211);
+}
+.voice-search-icon {
+  height: 24px;
+}
+.right {
+  display: flex;
+  align-items:center ;
+  justify-content: space-between;
+  width: 150px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+.create-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.create-frame:hover {
+  background-color: rgb(231, 231, 231);
+}
+.create {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.notifications-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.notifications-frame:hover {
+  background-color: rgb(231, 231, 231);
+}
+.notifications {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.notifications-number {
+  position: absolute;
+  font-size: 11px;
+  background-color: rgb(224, 0, 0);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 50%;
+  top: 5px;
+  right: 1px;
+}
+.my-channel-picture-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.my-channel-picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.menu-icon-frame,
+.search-button,
+.voice-search-button,
+.notifications-frame,
+.create-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-button-frame,
+.voice-search-button-frame,
+.create-frame,
+.notifications-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tooltip {
+  position: absolute;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(159, 159, 159);
+  padding: 4px 7px;
+  bottom: -30px;
+  opacity: 0;
+  transition: all 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.search-button-frame:hover .tooltip,
+.voice-search-button-frame:hover .tooltip,
+.create-frame:hover .tooltip,
+.notifications-frame:hover .tooltip {
+  opacity: 1;
+}
+
+
+
+.first-flex-box {
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  padding-top: 10px;
+}
+.video-suggesstions {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.thumbnail-frame {
+  position: relative;
+}
+.thumbnail {
+  width: 200px;
+  border-radius: 12px;
+}
+.time {
+  position: absolute;
+  font-size: 10px;
+  color: white;
+  background-color: black;
+  padding: 3px 4px;
+  border-radius: 4px;
+  right: 8px;
+  bottom: 8px;
+}
+.video-info {
+  width: 100%;
+  margin-left:8px;
+}
+.title {
+  font-weight: 600;
+  font-size: 15px;
+  color: black;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+.channel-name {
+  font-size: 400;
+  font-size: 12px;
+  color: rgb(123, 123, 123);
+  margin-bottom: 4px;
+}
+.video-stats {
+  font-size: 400;
+  font-size: 12px;
+  color: rgb(123, 123, 123);
+}
+.buttons-frame {
+  margin-bottom: 20px;
+}
+.buttons {
+  color: black;
+  background-color: rgb(231, 231, 231);
+  transition: all 0.2s;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+.buttons:hover {
+  background-color: rgb(211, 211, 211);
+}
+.buttons-s {
+  color: rgb(255, 255, 255);
+  background-color: black;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+.second-flex-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.big-thumnail {
+  width: 100%;
+  border-radius: 24px;
+}
+.big-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.big-video-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.channel-details {
+  display:flex ;
+  align-items: center;
+}
+.channel-picture-frame {
+  margin-right: 5px;
+}
+.channel-picture {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+.big-channel-name {
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+.subscribtions {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(123, 123, 123);
+}
+.indimam {
+  font-weight: 400;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  font-size: 15px;
+  border-radius: 24px;
+  padding: 8px 12px;
+  margin-left:8px ;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.indimam:hover {
+  background-color: rgb(154, 154, 154);
+  color: black;
+}
+.subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 5px 10px;
+  margin-left: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.subscribe:hover {
+  background-color: rgb(154, 154, 154);
+  border-color:rgb(154, 154, 154) ;
+}
+.subscribed {
+  font-weight: 500;
+  font-size: 15px;
+}
+.bell-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bell {
+  width: 25px;
+}
+
+.three-dots-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.three-dots-frame:hover {
+  background-color: rgb(154, 154, 154);
+  border-color:rgb(154, 154, 154) ;
+}
+.three-dots {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.like-dislike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 3px 6px;
+  margin-left: 8px;
+}
+.likes-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.likes-frame {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+.like-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+}
+.dislike-main-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid black;
+  margin-left: 5px;
+}
+.dislikes-frame {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
+.dislike-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+}
+.likes-frame:hover img,
+.dislikes-frame:hover img {
+  background-color: rgb(195, 195, 195);
+}
+.num {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.discribtion {
+  background-color: rgb(199, 199, 199);
+  border-radius: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.big-video-stats {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 5px;
+}
+
+
+.game-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+.game-name {
+  flex: 1;
+  background-color: rgb(199, 199, 199);
+  border-radius: 12px;
+  margin-right: 10px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-img-frame {
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.game-img {
+  height:100%;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.game-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.RUST {
+  font-size: 16px;
+  color: black ;
+  font-weight: 600;
+}
+.year-more {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(74, 74, 74);
+  margin-top: 10px;
+}
+
+.game-community {
+  flex: 1;
+  background-color: rgb(199, 199, 199);
+  border-radius: 12px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-community-logo-frame {
+  border-radius: 12px;
+  height: 100%;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-community-logo {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+.game-community-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+.video-games {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+.comments-num-sort {
+  display: flex;
+}
+.comments-num {
+  font-size: 30px;
+  color: black;
+  font-weight: 600;
+}
+.comments-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.comments-sort:hover {
+  background-color: rgb(206, 206, 206);
+}
+
+.sort-by {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+}
+.write-comment {
+  border-bottom: 1px solid black;
+}
+.a-comment {
+  border: none;
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+  font-size: 14px;
+  font-weight: 400;
+}
+.a-comment::placeholder {
+  font-family: roboto,arial;
+}
+.bottom-write-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px 3px 0 3px;
+}
+.right-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 2px;
+}
+.right-s:hover {
+  background-color: rgb(211, 211, 211);
+}
+.emojy {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.left-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancel-put {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cancel-put:hover {
+  background-color: rgb(208, 208, 208);
+  border-color: rgb(208, 208, 208);
+}
+.write-comment-bottom-write-comment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 10px;
+}
+.my-profile-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-profile {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+}
+.write-comment-bottom-write-comment-my-profile {
+  display: flex;
+  align-items: center;
+}
+
+.people-comments {
+  display: flex;
+  margin-bottom: 20px; 
+} 
+
+.people-comments-frame {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.profile-img-frame {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+.profile-img {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  object-position: top;
+}
+.name-time-comment-likes-dislikes-reply {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.name-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+}
+.time-comment {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(79, 79, 79);
+  margin-left: 15px;
+}
+.comment {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 8px;
+}
+.likes-dislikes-reply {
+  display: flex;
+  align-items: center;
+  margin-left: -3px;
+}
+.likes-f {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+.like-icon-f {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  padding: 3px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.like-icon-f:hover {
+  background-color: rgb(207, 207, 207);
+}
+.likes {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.likes-number {
+  font-size: 15px;
+  color: black;
+}
+.dislikes-f {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  padding: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+.dislikes-f:hover {
+  background-color: rgb(207, 207, 207);
+}
+.dislikes {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.reply {
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reply:hover {
+  background-color: rgb(201, 201, 201);
+  border-color:rgb(201, 201, 201) ;
+}
